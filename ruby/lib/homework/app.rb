@@ -142,7 +142,8 @@ class Homework::App
       database: ENV['DB_NAME'],
       host: ENV['DB_HOST'],
       username: ENV['DB_USER'],
-      password: ENV['DB_PASS']
+      password: ENV['DB_PASS'],
+      port: ENV['DB_PORT']
     }
   end
 end
