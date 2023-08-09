@@ -48,7 +48,7 @@ class Homework::API < Grape::API
     hide_documentation_path: true,
     info: {
       title: 'Homework',
-      description: File.read(File.join(Homework.root, '../README.md'))
+      description: File.read(File.join(Homework.root, 'README.md'))
     },
     security_definitions: {
       apiKey: {

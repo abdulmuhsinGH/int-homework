@@ -57,19 +57,25 @@ class Homework::App
   end
 
   def db_migrate
-    db_connection.create_table(:articles, primary_key: 'id', force: true) do |t|
-      t.string :title
-      t.string :content
-      t.string :created_at
+    unless db_connection.table_exists? :articles 
+      db_connection.create_table(:articles, primary_key: 'id', force: true) do |t|
+        t.string :title
+        t.string :content
+        t.string :created_at
+      end
     end
 
-    db_connection.create_table(:authors, primary_key: 'id', force: true) do |t|
-      t.string :full_name
-      t.string :email
-      t.string :created_at
+    unless db_connection.table_exists? :authors 
+      db_connection.create_table(:authors, primary_key: 'id', force: true) do |t|
+        t.string :full_name
+        t.string :email
+        t.string :created_at
+      end
     end
 
-    db_connection.create_join_table(:articles, :authors)
+    unless db_connection.table_exists? :articles_authors
+      db_connection.create_join_table(:articles, :authors)
+    end
   end
 
   def db_seed
