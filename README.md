@@ -26,5 +26,5 @@ For further information, see the handout.
 - Handle duplicate email addresses errors in the `Author` model. Respond with a message that the email address is already taken
 - Add `DB_PORT` to `.env.example` template file. This will allow the developers to change the port number of the database if needed
 - For db migration add check if the table already exists before creating it OR
-    - Add a the table if it exisits before creating the tables in the migration file if there are any changes to the tables
+    - add migration tasks to alter table when there is a need to add a new column, constraint, etc.
 
