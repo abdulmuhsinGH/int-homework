@@ -37,6 +37,22 @@ class Homework::API::Articles < Grape::API
         present current_article.update(declared(params)[:article])
       end
 
+      get :authors do
+        present current_article.authors
+      end
+
+      params do
+        use :author
+      end
+      post :authors do
+        author = Author.create(declared(params)[:author])
+       
+        current_article.authors << author
+        current_article.save
+
+        present author
+      end
+
       mount Homework::API::Authors
     end
   end
