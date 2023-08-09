@@ -33,6 +33,11 @@ class Homework::API < Grape::API
     error!({ error: e.message }, 404)
   end
 
+  # handle record not unique error
+  rescue_from ActiveRecord::RecordNotUnique do |e|
+    error!({ error: e.message }, 409)
+  end
+
   rescue_from :all do |e|
     Homework.logger.error e
     Homework.logger.error e.backtrace * "\n"

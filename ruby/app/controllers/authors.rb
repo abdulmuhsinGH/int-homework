@@ -9,6 +9,8 @@ class Homework::API::Authors < Grape::API
       use :author
     end
     post do
+      # TODO: Handle duplicate emails error 
+      # TODO: and send a response that author with that email already exists
       present Author.create(declared(params)[:author])
     end
 
@@ -25,7 +27,7 @@ class Homework::API::Authors < Grape::API
           Author.find(declared(params)[:author_id])
         end
       end
-
+      # TODO: use DELETE Method instead of GET for a delete action
       get :delete do
         present current_author.destroy
       end

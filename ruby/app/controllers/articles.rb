@@ -25,7 +25,7 @@ class Homework::API::Articles < Grape::API
           Article.find(declared(params)[:article_id])
         end
       end
-
+      # TODO: use DELETE Method instead of GET for a delete action
       get :delete do
         present current_article.destroy
       end

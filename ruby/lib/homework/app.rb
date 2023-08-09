@@ -66,9 +66,12 @@ class Homework::App
     end
 
     unless db_connection.table_exists? :authors 
+     
       db_connection.create_table(:authors, primary_key: 'id', force: true) do |t|
         t.string :full_name
         t.string :email
+        # Add unique constraint to email to prevent duplicate authors
+        t.index :email, unique: true
         t.string :created_at
       end
     end
