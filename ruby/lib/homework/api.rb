@@ -29,6 +29,11 @@ class Homework::API < Grape::API
     error!({ error: e.message }, 422)
   end
 
+  # handle method not allowed error
+  rescue_from Grape::Exceptions::MethodNotAllowed do |e|
+    error!({ error: e.message }, 405)
+  end
+
   rescue_from ActiveRecord::RecordNotFound do |e|
     error!({ error: e.message }, 404)
   end
